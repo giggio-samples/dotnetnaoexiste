@@ -6,6 +6,10 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="*.json" />
+    <None Remove="*.dmp" />
     <None Remove="*.gitignore" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
   </ItemGroup>
 </Project>
