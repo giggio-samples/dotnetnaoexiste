@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NonEcsiste
 {
-    public class TiposNaoEsistem
+    public class TiposNaoExistem
     {
         Simples Foo()
         {

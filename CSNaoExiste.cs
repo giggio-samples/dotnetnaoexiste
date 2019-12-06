@@ -56,18 +56,14 @@ namespace NonEcsiste
         {
             Console.WriteLine("um");
             await foreach (var line in CreateStreamAsync())
-            {
                 Console.WriteLine(line);
-            }
             Console.WriteLine("dois");
         }
         async IAsyncEnumerable<string> CreateStreamAsync()
         {
             using var sr = new StreamReader("path");
-            while (true)
-            {
+            while (!sr.EndOfStream)
                 yield return await sr.ReadLineAsync();
-            }
         }
 
         IAsyncEnumerator<string> CreateAsyncDispoableAsync()
@@ -79,33 +75,27 @@ namespace NonEcsiste
         async Task AwaitUsingDipose()
         {
             await using (var enumerator = CreateAsyncDispoableAsync())
-            {
                 while (await enumerator.MoveNextAsync())
-                {
                     Console.WriteLine(enumerator.Current);
-                }
-            }
         }
         async Task AwaitUsingStatementDipose()
         {
             await using var enumerator = CreateAsyncDispoableAsync();
             while (await enumerator.MoveNextAsync())
-            {
                 Console.WriteLine(enumerator.Current);
-            }
         }
 #nullable enable
         public string? ProduceNullableString() => DateTime.Now.Second > 30 ? null : "string";
         void TakesStringAndNullableString(string text, string? nullableString) => Console.WriteLine(text);
 
-        void ConsumesNullableString1()
+        void ConsumesNullableStringWithNullCheck()
         {
             var nullableString = ProduceNullableString();
             if (nullableString == null)
                 return;
             TakesStringAndNullableString(nullableString, null);
         }
-        void ConsumesNullableString2()
+        void ConsumesNullableStringWithIsNullOrWhiteSpace()
         {
             var nullableString = ProduceNullableString();
             if (string.IsNullOrWhiteSpace(nullableString))
