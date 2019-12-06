@@ -27,5 +27,10 @@ namespace NonEcsiste
             await Task.Delay(100);
             Console.WriteLine(start);
         }
+
+        public Task FooAsync(int start)
+        {
+            return Task.Delay(100);
+        }
     }
 }

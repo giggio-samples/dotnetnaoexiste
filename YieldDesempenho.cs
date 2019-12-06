@@ -23,7 +23,7 @@ namespace NonEcsiste
                 throw new ArgumentException("Must be greater than 0.", nameof(start));
             return InfinitoImpl(start);
         }
-        public IEnumerable<int> InfinitoImpl(int start)
+        private IEnumerable<int> InfinitoImpl(int start)
         {
             while (true)
                 yield return start++;
