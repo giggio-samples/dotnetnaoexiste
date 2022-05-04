@@ -1,32 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace NonEcsiste.YieldDesempenho;
 
-namespace NonEcsiste
+public class YieldDesempenho
 {
-    public class YieldDesempenho
+    public static IEnumerable<int> Infinito(int start)
     {
-        public IEnumerable<int> Infinito(int start)
-        {
-            if (start < 0)
-                throw new ArgumentException("Must be greater than 0.", nameof(start));
-            while (true)
-                yield return start++;
-        }
+        if (start < 0)
+            throw new ArgumentException("Must be greater than 0.", nameof(start));
+        while (true)
+            yield return start++;
     }
+}
 
-    public class YieldDesempenhoMelhor
+public class YieldDesempenhoMelhor
+{
+    public IEnumerable<int> Infinito(int start)
     {
-        public IEnumerable<int> Infinito(int start)
-        {
-            if (start < 0)
-                throw new ArgumentException("Must be greater than 0.", nameof(start));
-            return InfinitoImpl(start);
-        }
-        private IEnumerable<int> InfinitoImpl(int start)
-        {
-            while (true)
-                yield return start++;
-        }
+        if (start < 0)
+            throw new ArgumentException("Must be greater than 0.", nameof(start));
+        return InfinitoImpl(start);
+    }
+    private static IEnumerable<int> InfinitoImpl(int start)
+    {
+        while (true)
+            yield return start++;
     }
 }

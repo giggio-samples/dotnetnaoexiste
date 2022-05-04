@@ -1,29 +1,28 @@
-﻿namespace NonEcsiste
+﻿namespace NonEcsiste;
+
+public class TuplasExistem
 {
-    public class TuplasExistem
+    static (int, int) Retorna()
     {
-        (int, int) Retorna()
-        {
-            var t = (a: 1, b: 2);
-            return t;
-        }
+        var t = (a: 1, b: 2);
+        return t;
+    }
 
-        void Obtem1()
-        {
-            var (i, j) = Retorna();
-        }
+    void Obtem1()
+    {
+        var (i, j) = Retorna();
+    }
 
-        (int, int) Retorna2()
-        {
-            var t = (b: 1, d: 2);
-            return t;
-        }
+    static (int, int) Retorna2()
+    {
+        var t = (b: 1, d: 2);
+        return t;
+    }
 
-        void Obtem2()
-        {
-            var t = Retorna2();
-            var i = t.Item1;
-            var j = t.Item2;
-        }
+    void Obtem2()
+    {
+        var t = Retorna2();
+        var i = t.Item1;
+        var j = t.Item2;
     }
 }
