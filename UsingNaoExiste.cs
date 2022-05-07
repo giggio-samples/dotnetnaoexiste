@@ -20,8 +20,12 @@ public class UsingNaoExiste
     async Task AwaitUsingDipose()
     {
         await using (var enumerator = CreateAsyncDispoableAsync())
+        {
             while (await enumerator.MoveNextAsync())
+            {
                 WriteLine(enumerator.Current);
+            }
+        }
     }
     async Task AwaitUsingStatementDipose()
     {
