@@ -7,11 +7,17 @@ public class OperadoresNaoExistem
     static void M()
     {
         var nome = pessoa?.Nome;
+        // vira:
+        if (pessoa != null)
+			nome = pessoa.Nome;
     }
 
     static void N()
     {
         var outraPessoa = pessoa ?? new Person(null);
+        // vira:
+        if (pessoa == null)
+            outraPessoa = new Person(null);
     }
 
     static void O()

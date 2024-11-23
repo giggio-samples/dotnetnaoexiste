@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Linq.Expressions;
+using System.Reflection;
 
 namespace NonEcsiste.LinqNaoExiste;
 
-class LinqNaoExiste
+public class LinqNaoExiste
 {
     public static void LinqToObjects()
     {
@@ -11,6 +12,8 @@ class LinqNaoExiste
         var maioresQue1 = from n in ns
                           where n > 1
                           select n;
+        // como se fosse:
+        // var maioresQue1 = Enumerable.Where(ns, n => n > 1);
         foreach (var n in maioresQue1)
             WriteLine(n);
     }
@@ -20,6 +23,12 @@ class LinqNaoExiste
         var famigliaBassi = from n in pessoas
                             where n.SobreNome == "Bassi"
                             select n;
+        // quase como se fosse:
+        // ParameterExpression pessoaParameter = Expression.Parameter(typeof(Pessoa), "n");
+        // var famigliaBassi  = Queryable.Where(pessoas,
+        //     Expression.Lambda<Func<Pessoa, bool>>(
+        //         Expression.Equal(Expression.Property(pessoaParameter, Pessoa.SobreNome),
+        //         Expression.Constant("Bassi", typeof(string))), [pessoaParameter]));
         foreach (var pessoa in famigliaBassi)
             WriteLine(pessoa);
     }

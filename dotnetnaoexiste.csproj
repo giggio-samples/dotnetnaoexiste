@@ -13,7 +13,7 @@
 		<None Remove="*.txt" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" /> <!-- do not update, later versions use .NET 6, not netstd -->
 	</ItemGroup>
 	<ItemGroup>
 		<Using Include="System.Console" Static="true" />

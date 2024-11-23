@@ -10,6 +10,22 @@ public class PatternMatchersNaoExistem
         _ => "Acceptable",
     };
 
+
+    private static string ClassifyCompiled(double measurement)
+    {
+        if (!(measurement < -4.0))
+        {
+            if (!(measurement > 10.0))
+            {
+                if (double.IsNaN(measurement))
+                    return "Unknown";
+                return "Acceptable";
+            }
+            return "Too high";
+        }
+        return "Too low";
+    }
+
     static string ObterEstacaoDoAno(DateTime data) => data.Month switch
     {
         >= 3 and < 6 => "Outono",
@@ -18,6 +34,31 @@ public class PatternMatchersNaoExistem
         12 or (>= 1 and < 3) => "Verão",
         _ => throw new ArgumentOutOfRangeException(nameof(data), $"Data inesperada: {data.Month}."),
     };
+
+    static string ObterEstacaoDoAnoCompiled(DateTime data)
+    {
+        switch (data.Month)
+        {
+            case 3:
+            case 4:
+            case 5:
+                return "Outono";
+            case 6:
+            case 7:
+            case 8:
+                return "Inverno";
+            case 9:
+            case 10:
+            case 11:
+                return "Primavera";
+            case 1:
+            case 2:
+            case 12:
+                return "Verão";
+            default:
+                throw new ArgumentOutOfRangeException(nameof(data), $"Data inesperada: {data.Month}.");
+        }
+    }
 
     static string TakeFive(object input) => input switch
     {

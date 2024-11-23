@@ -3,8 +3,10 @@ namespace NonEcsiste;
 
 public class NullableNaoExiste
 {
+    // ganha o atributo [NullableContext(2)]
     public static string? ProduceNullableString() => DateTime.Now.Second > 30 ? null : "string";
-    static void TakesStringAndNullableString(string text, string? nullableString) => WriteLine(text);
+    // ganha o atributo [NullableContext(1)]
+    static void TakesStringAndNullableString(string text, /* [Nullable(2)] */ string? nullableString) => WriteLine(text);
 
     void ConsumesNullableStringWithNullCheck()
     {
